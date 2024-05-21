@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>extended_out_of_stock_actions</id>
+    <version>1.0</version>
+    <priority>1000</priority>
+    <position>45</position>
+    <status>active</status>
+    <supplier>Exikane</supplier>
+    <default_language>ru</default_language>
+    <compatibility>
+        <dependencies>call_requests</dependencies>
+    </compatibility>
+    <queries>
+        <item for="install">
+            CREATE TABLE `?:request_analog` (
+            `request_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+            `company_id` mediumint(8) unsigned NOT NULL default '0',
+            `user_id` mediumint(8) unsigned NOT NULL default '0',
+            `product_id` mediumint(8) unsigned NOT NULL default '0',
+            `timestamp` int(11) unsigned NOT NULL default '0',
+            `status` enum('new', 'in_progress', 'completed', 'no_answer') NOT NULL default 'new',
+            `phone` varchar(128) NOT NULL default '',
+            `name` varchar(128) NOT NULL default '',
+            `email` varchar(128) NOT NULL default '',
+            `quantity` mediumint(8) unsigned NOT NULL default '1',
+            PRIMARY KEY (`request_id`),
+            KEY `user_id` (`company_id`,`user_id`),
+            KEY `timestamp` (`timestamp`),
+            KEY `status` (`status`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="uninstall">
+            DROP TABLE IF EXISTS ?:request_analog;
+        </item>
+    </queries>
+    <email_templates>
+        <templates>
+            <item>
+                <code><![CDATA[extended_out_of_stock_actions_email_template]]></code>
+                <area><![CDATA[A]]></area>
+                <status><![CDATA[A]]></status>
+                <default_subject><![CDATA[{{ __("extended_out_of_stock_actions.subj") }}]]></default_subject>
+                <default_template><![CDATA[{{ snippet("header") }}
+
+{{ __("extended_out_of_stock_actions.text_email_notice") }}
+
+{{ snippet("footer") }}]]></default_template>
+                <addon><![CDATA[extended_out_of_stock_actions]]></addon>
+            </item>
+        </templates>
+    </email_templates>
+</addon>
+
+
