@@ -4,7 +4,7 @@
         <input type="hidden" name="redirect_url" value="{if $redirect_url}{$redirect_url}{else}{$config.current_url}{/if}" />
         <input type="hidden" name="call_data[product_id]" value="{$product.product_id}" />
         <div class="ty-analog-items">
-            {include file="blocks/products/products_scroller_advanced.tpl" items=fn_extended_out_of_stock_actions_get_analogues($object_id) block=fn_scroller_properties() hide_wishlist_button=true hide_compare_list_button=true}
+            {include file="addons/extended_out_of_stock_actions/views/product_scroller.tpl" items=fn_extended_out_of_stock_actions_get_analogues($object_id) block=fn_scroller_properties() hide_wishlist_button=true hide_compare_list_button=true}
         </div>
         <div id="new_request_analog_{$object_id}">
             <div class="ty-control-group">
