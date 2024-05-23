@@ -25,7 +25,7 @@
             </div>
             <br>
             <!--new_request_analog_{$object_id}--></div>
-        <div class="buttons-container">
+        <div class="buttons-container-analog">
             {include file="buttons/button.tpl" but_text=__("send") but_meta="ty-btn__primary ty-btn__big cm-form-dialog-closer ty-btn" but_role="submit" but_name="dispatch[extended_out_of_stock_actions.request_analog]"}
         </div>
     </form>

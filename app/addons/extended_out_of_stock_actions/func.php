@@ -116,12 +116,9 @@ function fn_delete_analog_request($request_id)
 function fn_extended_out_of_stock_actions_get_analogues(int $product_id)
 {
     $cache_name = 'extended_out_of_stock_actions_analogues_' . $product_id;
-
-    Registry::registerCache($cache_name, SECONDS_IN_DAY * 7, Registry::cacheLevel(['static']));
-
+    Registry::registerCache($cache_name, ['mws_analogues'], Registry::cacheLevel('static'));
     if (!Registry::isExist($cache_name)) {
-        $analogues = db_get_fields("SELECT product_id FROM ?:product_prices WHERE price > 1000", $product_id);
-        $analogues = implode(',', $analogues);
+        $analogues = db_get_field("SELECT recommend_ids FROM ?:mws_analogues WHERE product_id = ?i", $product_id);
 
         $params = [
             'force_get_by_ids' => true,
@@ -138,21 +135,20 @@ function fn_extended_out_of_stock_actions_get_analogues(int $product_id)
         fn_gather_additional_products_data($products[0], $additional_params);
         Registry::set($cache_name, $products[0]);
     }
+
     return Registry::get($cache_name);
 }
-
-
 
 function fn_scroller_properties() {
     $setting_values = Registry::get('addons.extended_out_of_stock_actions');
     return [
         'block_id' => uniqid(),
         'properties' => array(
-            'not_scroll_automatically' => $setting_values['not_scroll_automatically'],
+            'not_scroll_automatically' => 'Y', // hardcoded as works incorrectly in the pop-up
             'scroll_per_page' => $setting_values['scroll_per_page'],
             'item_quantity' => $setting_values['item_quantity'],
             'outside_navigation' => $setting_values['outside_navigation'],
-            'hide_add_to_cart_button' => $setting_values['hide_add_to_cart_button'],
+            'hide_add_to_cart_button' => 'Y', // hardcoded as works incorrectly in the pop-up
             'show_price' => $setting_values['show_price'],
         ),
     ];

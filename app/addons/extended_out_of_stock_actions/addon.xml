@@ -56,10 +56,6 @@
                     <item id="analogs_settings_header">
                         <type>header</type>
                     </item>
-                    <item id="not_scroll_automatically">
-                        <type>checkbox</type>
-                        <variants/>
-                    </item>
                     <item id="scroll_per_page">
                         <type>checkbox</type>
                         <variants/>
@@ -69,10 +65,6 @@
                         <default_value>3</default_value>
                     </item>
                     <item id="outside_navigation">
-                        <type>checkbox</type>
-                        <variants/>
-                    </item>
-                    <item id="hide_add_to_cart_button">
                         <type>checkbox</type>
                         <variants/>
                     </item>

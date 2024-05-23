@@ -72,7 +72,7 @@ msgctxt "Languages::email_template.extended_out_of_stock_actions_email_template"
 msgid "Request analog: New request was received"
 msgstr "Запрос аналога: Получен новый запрос"
 
-msgctxt "SettingsOptions::extended_out_of_stock_actions::header"
+msgctxt "SettingsOptions::extended_out_of_stock_actions::analogs_settings_header"
 msgid "Settings of a scroller within form"
 msgstr "Настройки скроллера в форме"
 
