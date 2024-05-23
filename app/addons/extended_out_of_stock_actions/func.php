@@ -115,28 +115,33 @@ function fn_delete_analog_request($request_id)
 
 function fn_extended_out_of_stock_actions_get_analogues(int $product_id)
 {
-    $analogues = db_get_field("SELECT recommend_ids FROM ?:mws_analogues WHERE product_id = ?i", $product_id);
+    $cache_name = 'extended_out_of_stock_actions_analogues_' . $product_id;
 
-    $params = [
-        'force_get_by_ids' => true,
-        'pid' => $analogues
-    ];
+    Registry::registerCache($cache_name, SECONDS_IN_DAY * 7, Registry::cacheLevel(['static']));
 
-    $products = fn_get_products($params);
+    if (!Registry::isExist($cache_name)) {
+        $analogues = db_get_fields("SELECT product_id FROM ?:product_prices WHERE price > 1000", $product_id);
+        $analogues = implode(',', $analogues);
 
-    $additional_params = [
-        'get_icon' => true,
-        'get_detailed' => true,
-        'get_additional' => true,
-        'get_options' => false,
-        'get_discounts' => true,
-        'get_features' => false
-    ];
+        $params = [
+            'force_get_by_ids' => true,
+            'pid' => $analogues
+        ];
 
-    fn_gather_additional_products_data($products[0], $additional_params);
+        $products = fn_get_products($params);
 
-    return $products[0];
+        $additional_params = [
+            'get_icon' => true,
+            'get_detailed' => true,
+        ];
+
+        fn_gather_additional_products_data($products[0], $additional_params);
+        Registry::set($cache_name, $products[0]);
+    }
+    return Registry::get($cache_name);
 }
+
+
 
 function fn_scroller_properties() {
     $setting_values = Registry::get('addons.extended_out_of_stock_actions');
