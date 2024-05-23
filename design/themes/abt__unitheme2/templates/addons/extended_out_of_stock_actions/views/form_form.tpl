@@ -3,20 +3,9 @@
         <input type="hidden" name="result_ids" value="new_thread_message_{$object_id},threads_container" />
         <input type="hidden" name="redirect_url" value="{if $redirect_url}{$redirect_url}{else}{$config.current_url}{/if}" />
         <input type="hidden" name="call_data[product_id]" value="{$product.product_id}" />
-
-{*        {if $product}*}
-{*            <div class="ty-extended_out_of_stock_actions-product-info-container">*}
-{*                <div class="ty-extended_out_of_stock_actions-product-info-image">*}
-{*                    {include file="common/image.tpl" images=$product.main_pair image_width=$settings.Thumbnails.product_cart_thumbnail_width image_height=$settings.Thumbnails.product_cart_thumbnail_height}*}
-{*                </div>*}
-{*                <div class="ty-extended_out_of_stock_actions-product-info-header">*}
-{*                    <h3 class="ty-product-block-title"><bdi>{$product.product}</bdi></h3>*}
-{*                    {hook name="products:product_additional_info"}*}
-{*                    {/hook}*}
-{*                </div>*}
-{*            </div>*}
-{*        {/if}*}
-
+        <div class="ty-analog-items">
+            {include file="blocks/products/products_scroller_advanced.tpl" items=fn_extended_out_of_stock_actions_get_analogues($object_id) block=fn_scroller_properties() hide_wishlist_button=true hide_compare_list_button=true}
+        </div>
         <div id="new_request_analog_{$object_id}">
             <div class="ty-control-group">
                 <label class="ty-control-group__title" for="call_data_{$id}_name">{__("your_name")}</label>

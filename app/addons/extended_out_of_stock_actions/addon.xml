@@ -49,6 +49,39 @@
             </item>
         </templates>
     </email_templates>
+    <settings edition_type="ROOT">
+        <sections>
+            <section id="general">
+                <items>
+                    <item id="analogs_settings_header">
+                        <type>header</type>
+                    </item>
+                    <item id="not_scroll_automatically">
+                        <type>checkbox</type>
+                        <variants/>
+                    </item>
+                    <item id="scroll_per_page">
+                        <type>checkbox</type>
+                        <variants/>
+                    </item>
+                    <item id="item_quantity">
+                        <type>input</type>
+                        <default_value>3</default_value>
+                    </item>
+                    <item id="outside_navigation">
+                        <type>checkbox</type>
+                        <variants/>
+                    </item>
+                    <item id="hide_add_to_cart_button">
+                        <type>checkbox</type>
+                        <variants/>
+                    </item>
+                    <item id="show_price">
+                        <type>checkbox</type>
+                        <variants/>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
 </addon>
-
-

@@ -112,3 +112,43 @@ function fn_delete_analog_request($request_id)
 {
     return db_query("DELETE FROM ?:request_analog WHERE request_id = ?i", $request_id);
 }
+
+function fn_extended_out_of_stock_actions_get_analogues(int $product_id)
+{
+    $analogues = db_get_field("SELECT recommend_ids FROM ?:mws_analogues WHERE product_id = ?i", $product_id);
+
+    $params = [
+        'force_get_by_ids' => true,
+        'pid' => $analogues
+    ];
+
+    $products = fn_get_products($params);
+
+    $additional_params = [
+        'get_icon' => true,
+        'get_detailed' => true,
+        'get_additional' => true,
+        'get_options' => false,
+        'get_discounts' => true,
+        'get_features' => false
+    ];
+
+    fn_gather_additional_products_data($products[0], $additional_params);
+
+    return $products[0];
+}
+
+function fn_scroller_properties() {
+    $setting_values = Registry::get('addons.extended_out_of_stock_actions');
+    return [
+        'block_id' => uniqid(),
+        'properties' => array(
+            'not_scroll_automatically' => $setting_values['not_scroll_automatically'],
+            'scroll_per_page' => $setting_values['scroll_per_page'],
+            'item_quantity' => $setting_values['item_quantity'],
+            'outside_navigation' => $setting_values['outside_navigation'],
+            'hide_add_to_cart_button' => $setting_values['hide_add_to_cart_button'],
+            'show_price' => $setting_values['show_price'],
+        ),
+    ];
+}

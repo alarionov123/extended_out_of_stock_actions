@@ -72,3 +72,30 @@ msgctxt "Languages::email_template.extended_out_of_stock_actions_email_template"
 msgid "Request analog: New request was received"
 msgstr "Запрос аналога: Получен новый запрос"
 
+msgctxt "SettingsOptions::extended_out_of_stock_actions::header"
+msgid "Settings of a scroller within form"
+msgstr "Настройки скроллера в форме"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::not_scroll_automatically"
+msgid "Не прокручивать автоматически"
+msgstr "Не прокручивать автоматически"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::scroll_per_page"
+msgid "Листать постранично"
+msgstr "Листать постранично"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::item_quantity"
+msgid "Количество элементов"
+msgstr "Количество элементов"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::outside_navigation"
+msgid "Внешняя навигация"
+msgstr "Внешняя навигация"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::hide_add_to_cart_button"
+msgid "Спрятать кнопку добавления товара в корзину"
+msgstr "Спрятать кнопку добавления товара в корзину"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::show_price"
+msgid "Показывать цену"
+msgstr "Показывать цену"
