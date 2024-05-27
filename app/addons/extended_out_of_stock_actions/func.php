@@ -146,9 +146,9 @@ function fn_delete_analog_request(int $request_id): mixed
  * If there was a request for this product - it retrieves the analogues list from the cache
  *
  * @param int $product_id
- * @return mixed
+ * @return array
  */
-function fn_extended_out_of_stock_actions_get_analogues(int $product_id): mixed
+function fn_extended_out_of_stock_actions_get_analogues(int $product_id): array
 {
     $cache_name = 'extended_out_of_stock_actions_analogues_' . $product_id;
     Registry::registerCache($cache_name, ['mws_analogues'], Registry::cacheLevel('static'));

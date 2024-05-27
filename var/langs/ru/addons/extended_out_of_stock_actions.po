@@ -14,7 +14,7 @@ msgstr ""
 
 msgctxt "Addons::name::extended_out_of_stock_actions"
 msgid "Extended out of stock actions"
-msgstr "Расширенные действия при отсутствии товара в наличии"
+msgstr "Расширенный функционал работы с аналогами товаров"
 
 msgctxt "Addons::description::extended_out_of_stock_actions"
 msgid "Adds a new out of stock actions"
