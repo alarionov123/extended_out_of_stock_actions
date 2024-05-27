@@ -1,3 +1,5 @@
+{* Adds a new condition rule - $product.out_of_stock_actions === "R" *}
+
 {if (
 $product.zero_price_action != "R"
 || $product.price != 0
@@ -32,20 +34,19 @@ $product.has_options
     {$show_qty = false}
     {if !$details_page}
         {if (!$product.hide_stock_info && !(($product_amount <= 0 || $product_amount < $product.min_qty) && ($product.avail_since > $smarty.const.TIME)))}
-            <button disabled class="ty-btn ty-btn__tertiary" id="out_of_stock_info_{$obj_prefix}{$obj_id}"><span><i class="ut2-icon-use_icon_cart"></i><bdi>{$out_of_stock_text}</bdi></span></button>
+            <button disabled class="ty-btn ty-btn__tertiary" id="out_of_stock_info_{$obj_prefix}{$obj_id}"><span><i
+                            class="ut2-icon-use_icon_cart"></i><bdi>{$out_of_stock_text}</bdi></span></button>
         {/if}
     {elseif ($product.out_of_stock_actions == "OutOfStockActions::SUBSCRIBE"|enum)}
         <div id="subscribe_form_wrapper"><!--subscribe_form_wrapper--></div>
-
         <script>
-            (function(_, $) {
+            (function (_, $) {
                 $.ceAjax('request', fn_url('products.subscription_form?product_id={$product.product_id}'), {
                     hidden: true,
                     result_ids: 'subscribe_form_wrapper'
                 });
             }(Tygh, Tygh.$));
         </script>
-
         {include file="common/image_verification.tpl" option="track_product_in_stock"}
     {/if}
     {/hook}

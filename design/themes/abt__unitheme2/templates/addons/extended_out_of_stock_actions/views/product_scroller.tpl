@@ -1,4 +1,4 @@
-{** block-description:abt__ut2__scroller_advanced **}
+{** Product scroller **}
 
 {$tmpl='products_multicolumns'}
 
@@ -41,64 +41,64 @@
 
 {** Detecting grid item height **}
 
-    {* Grid padding *}
-    {assign var="pd" value=45}
+{* Grid padding *}
+{assign var="pd" value=45}
 
-    {* Thumb *}
-    {if $settings.abt__device == "mobile"}
-        {assign var="t1" value=150}
-    {else}
-        {assign var="t1" value=$settings.abt__ut2.product_list.$tmpl.image_height[$settings.abt__device]|default:$settings.Thumbnails.product_lists_thumbnail_height|intval + 10}
-    {/if}
+{* Thumb *}
+{if $settings.abt__device == "mobile"}
+    {assign var="t1" value=150}
+{else}
+    {assign var="t1" value=$settings.abt__ut2.product_list.$tmpl.image_height[$settings.abt__device]|default:$settings.Thumbnails.product_lists_thumbnail_height|intval + 10}
+{/if}
 
-	{* Show rating *}
-    {assign var="t2" value=21}
+{* Show rating *}
+{assign var="t2" value=21}
 
-	{* Show sku *}
-    {if $settings.abt__ut2.product_list.$tmpl.show_sku[$settings.abt__device] == "YesNo::YES"|enum}
-    	{assign var="t3" value=17}
-    {/if}
+{* Show sku *}
+{if $settings.abt__ut2.product_list.$tmpl.show_sku[$settings.abt__device] == "YesNo::YES"|enum}
+    {assign var="t3" value=17}
+{/if}
 
-    {* Show name *}
-    {assign var="t4" value=37}
+{* Show name *}
+{assign var="t4" value=37}
 
-    {* Show amount *}
-    {if $settings.abt__ut2.product_list.$tmpl.show_amount[$settings.abt__device] == "YesNo::YES"|enum}
-    	{assign var="t5" value=20}
-    {/if}
+{* Show amount *}
+{if $settings.abt__ut2.product_list.$tmpl.show_amount[$settings.abt__device] == "YesNo::YES"|enum}
+    {assign var="t5" value=20}
+{/if}
 
-    {* Show price *}
-    {if $settings.abt__ut2.product_list.price_display_format == "row" || $settings.abt__ut2.product_list.price_display_format == "row-mix"}
-        {assign var="t6" value=35}
-    {else}
-        {assign var="t6" value=42}
-    {/if}
+{* Show price *}
+{if $settings.abt__ut2.product_list.price_display_format == "row" || $settings.abt__ut2.product_list.price_display_format == "row-mix"}
+    {assign var="t6" value=35}
+{else}
+    {assign var="t6" value=42}
+{/if}
 
-    {* Show buttons *}
-    {if $show_add_to_cart && $settings.abt__ut2.product_list.$tmpl.show_buttons_on_hover[$settings.abt__device] == "YesNo::NO"|enum}
-        {assign var="t7" value=41}
-    {/if}
+{* Show buttons *}
+{if $show_add_to_cart && $settings.abt__ut2.product_list.$tmpl.show_buttons_on_hover[$settings.abt__device] == "YesNo::NO"|enum}
+    {assign var="t7" value=41}
+{/if}
 
-    {* Show your save *}
-    {if $settings.abt__ut2.product_list.$tmpl.show_you_save[$settings.abt__device] == "YesNo::YES"|enum}
-    	{assign var="t8" value=16}
-    {/if}
+{* Show your save *}
+{if $settings.abt__ut2.product_list.$tmpl.show_you_save[$settings.abt__device] == "YesNo::YES"|enum}
+    {assign var="t8" value=16}
+{/if}
 
-    {* Show clean price *}
-    {if $settings.Appearance.show_prices_taxed_clean == "YesNo::YES"|enum}
-    	{assign var="t9" value=16}
-    {/if}
+{* Show clean price *}
+{if $settings.Appearance.show_prices_taxed_clean == "YesNo::YES"|enum}
+    {assign var="t9" value=16}
+{/if}
 
-	{$th = $t1|default:0 + $t2|default:0 + $t3|default:0 + $t4|default:0 + $t5|default:0 + $t6|default:0 + $t7|default:0 + $t8|default:0 + $t9|default:0 + $pd}
-    {capture name="abt__ut2_gl_item_height"}{if $settings.abt__ut2.product_list.$tmpl.grid_item_height[$settings.abt__device]}{$settings.abt__ut2.product_list.$tmpl.grid_item_height[$settings.abt__device]}{else}{$th}{/if}{/capture}
+{$th = $t1|default:0 + $t2|default:0 + $t3|default:0 + $t4|default:0 + $t5|default:0 + $t6|default:0 + $t7|default:0 + $t8|default:0 + $t9|default:0 + $pd}
+{capture name="abt__ut2_gl_item_height"}{if $settings.abt__ut2.product_list.$tmpl.grid_item_height[$settings.abt__device]}{$settings.abt__ut2.product_list.$tmpl.grid_item_height[$settings.abt__device]}{else}{$th}{/if}{/capture}
 
-	{** Price block height **}
-	{$pth = $t6|default:0 + $t8|default:0 + $t9|default:0 + 10}
-	{capture name="abt__ut2_pr_block_height"}{$pth}{/capture}
+{** Price block height **}
+{$pth = $t6|default:0 + $t8|default:0 + $t9|default:0 + 10}
+{capture name="abt__ut2_pr_block_height"}{$pth}{/capture}
 
-    {* Thumb *}
-    {assign var="tbw" value=$settings.abt__ut2.product_list.$tmpl.image_width[$settings.abt__device]|default:$settings.Thumbnails.product_lists_thumbnail_width}
-    {assign var="tbh" value=$settings.abt__ut2.product_list.$tmpl.image_height[$settings.abt__device]|default:$settings.Thumbnails.product_lists_thumbnail_height}
+{* Thumb *}
+{assign var="tbw" value=$settings.abt__ut2.product_list.$tmpl.image_width[$settings.abt__device]|default:$settings.Thumbnails.product_lists_thumbnail_width}
+{assign var="tbh" value=$settings.abt__ut2.product_list.$tmpl.image_height[$settings.abt__device]|default:$settings.Thumbnails.product_lists_thumbnail_height}
 
 {** end **}
 
@@ -110,7 +110,7 @@
 
 {if $block.properties.outside_navigation == "YesNo::YES"|enum}
     <div class="owl-theme ty-owl-controls">
-        <div class="owl-controls clickable owl-controls-outside"  id="owl_outside_nav_{$block.block_id}">
+        <div class="owl-controls clickable owl-controls-outside" id="owl_outside_nav_{$block.block_id}">
             <div class="owl-buttons">
                 <div id="owl_prev_{$obj_prefix}" class="owl-prev"><i class="ty-icon-left-open-thin"></i></div>
                 <div id="owl_next_{$obj_prefix}" class="owl-next"><i class="ty-icon-right-open-thin"></i></div>
@@ -118,7 +118,7 @@
         </div>
     </div>
 {/if}
-
+<div class="ty-mainbox-title">{__("analogues_list")}</div>
 <div id="scroll_list_{$block.block_id}" class="owl-carousel ty-scroller-list ty-scroller grid-list">
     {foreach from=$items item="product" name="for_products"}
         {hook name="products:product_scroller_advanced_list"}
@@ -136,9 +136,9 @@
                     {$smarty.capture.$form_open nofilter}
 
                     {hook name="products:product_multicolumns_list"}
-
                         <div class="ut2-gl__body">
-                            <div class="ut2-gl__image {if !$product.main_pair}ut2-no-image{/if}" style="height: {$block.properties.abt__ut2_thumbnail_height|default:$tbh}px">
+                            <div class="ut2-gl__image {if !$product.main_pair}ut2-no-image{/if}"
+                                 style="height: {$block.properties.abt__ut2_thumbnail_height|default:$tbh}px">
                                 {capture name="main_icon"}
                                     <a href="{"products.view?product_id=`$product.product_id`"|fn_url}">
                                         {include file="common/image.tpl"
@@ -146,7 +146,7 @@
                                         image_width=$block.properties.thumbnail_width|default:$tbw
                                         image_height=$block.properties.abt__ut2_thumbnail_height|default:$tbh
                                         no_ids=true
-                                       }
+                                        }
                                     </a>
                                 {/capture}
 
@@ -155,7 +155,8 @@
                                 {assign var="product_labels" value="product_labels_`$obj_prefix``$obj_id`"}
                                 {$smarty.capture.$product_labels nofilter}
 
-                                <div class="ut2-gl__buttons" {if $smarty.capture.abt__service_buttons_id}id="{$smarty.capture.abt__service_buttons_id}"{/if}>
+                                <div class="ut2-gl__buttons"
+                                     {if $smarty.capture.abt__service_buttons_id}id="{$smarty.capture.abt__service_buttons_id}"{/if}>
                                     {if $block.properties.enable_quick_view == "YesNo::YES"|enum && $settings.abt__device != "mobile"}
                                         {include file="views/products/components/quick_view_link.tpl" quick_nav_ids=$quick_nav_ids}
                                     {/if}
@@ -165,7 +166,7 @@
                                     {if $settings.General.enable_compare_products == "YesNo::YES"|enum && !$hide_compare_list_button || $product.feature_comparison == "YesNo::YES"|enum}
                                         {include file="buttons/add_to_compare_list.tpl" product_id=$product.product_id}
                                     {/if}
-                                <!--{$smarty.capture.abt__service_buttons_id}--></div>
+                                    <!--{$smarty.capture.abt__service_buttons_id}--></div>
 
                                 {if $show_brand_logo && $settings.abt__ut2.general.brand_feature_id > 0}
                                     {$b_feature = $product.abt__ut2_features[$settings.abt__ut2.general.brand_feature_id]}
@@ -178,96 +179,107 @@
                             </div>
 
                             {if $settings.abt__ut2.product_list.price_position_top|default:{"YesNo::YES"|enum} == "YesNo::YES"|enum}
-                            <div class="ut2-gl__price{if $product.price == 0} ut2-gl__no-price{/if}	pr-{$settings.abt__ut2.product_list.price_display_format}{if $product.list_discount || $product.discount} pr-color{/if}" style="min-height: {$smarty.capture.abt__ut2_pr_block_height - 5 nofilter}px;">
-                                <div>
-                                    {assign var="old_price" value="old_price_`$obj_id`"}
-                                    {if $smarty.capture.$old_price|trim}{$smarty.capture.$old_price nofilter}{/if}
+                                <div class="ut2-gl__price{if $product.price == 0} ut2-gl__no-price{/if}	pr-{$settings.abt__ut2.product_list.price_display_format}{if $product.list_discount || $product.discount} pr-color{/if}"
+                                     style="min-height: {$smarty.capture.abt__ut2_pr_block_height - 5 nofilter}px;">
+                                    <div>
+                                        {assign var="old_price" value="old_price_`$obj_id`"}
+                                        {if $smarty.capture.$old_price|trim}{$smarty.capture.$old_price nofilter}{/if}
 
-                                    {assign var="price" value="price_`$obj_id`"}
-                                    {$smarty.capture.$price nofilter}
+                                        {assign var="price" value="price_`$obj_id`"}
+                                        {$smarty.capture.$price nofilter}
+                                    </div>
+                                    <div>
+                                        {assign var="list_discount" value="list_discount_`$obj_id`"}
+                                        {$smarty.capture.$list_discount nofilter}
+
+                                        {assign var="clean_price" value="clean_price_`$obj_id`"}
+                                        {$smarty.capture.$clean_price nofilter}
+                                    </div>
                                 </div>
-                                <div>
-                                    {assign var="list_discount" value="list_discount_`$obj_id`"}
-                                    {$smarty.capture.$list_discount nofilter}
-
-                                    {assign var="clean_price" value="clean_price_`$obj_id`"}
-                                    {$smarty.capture.$clean_price nofilter}
-								</div>
-                            </div>
                             {/if}
 
                             <div class="ut2-gl__content">
 
-                            {if $settings.abt__ut2.product_list.show_rating == "YesNo::YES"|enum}
-							{hook name="products:product_rating"}
-                            	<div class="ut2-gl__rating ut2-rating-stars {if $settings.abt__ut2.product_list.show_rating == "YesNo::YES"|enum && $addons.product_reviews.status == "ObjectStatuses::ACTIVE"|enum}r-block{/if}">
-                                      
-                                    {hook name="products:dotd_product_label"}{/hook}
-                                    {hook name="products:video_gallery"}{/hook}
+                                {if $settings.abt__ut2.product_list.show_rating == "YesNo::YES"|enum}
+                                    {hook name="products:product_rating"}
+                                        <div class="ut2-gl__rating ut2-rating-stars {if $settings.abt__ut2.product_list.show_rating == "YesNo::YES"|enum && $addons.product_reviews.status == "ObjectStatuses::ACTIVE"|enum}r-block{/if}">
 
-                                    {if $addons.product_reviews.status == "ObjectStatuses::ACTIVE"|enum}
-                                        {if $product.reviews_count}<div class="cn-reviews"><i class="ut2-icon-outline-chat"></i> {$product.reviews_count}</div>{/if}
-                                        {if $product.average_rating}
-                                            {include file="addons/product_reviews/views/product_reviews/components/product_reviews_stars.tpl"
-                                                rating=$product.average_rating
-                                                link=true
-                                                product=$product
-                                            }
-                                        {else}
-                                            <div class="ty-product-review-reviews-stars" data-ca-product-review-reviews-stars-full="0"></div>
-                                        {/if}
-                                    {else}
-                                        {assign var="rating" value="rating_$obj_id"}
-                                        {if $smarty.capture.$rating|strlen > 40 && $product.discussion_type && $product.discussion_type != "D"}
-                                            {$smarty.capture.$rating nofilter}
-                                        {elseif $addons.discussion.status == "ObjectStatuses::ACTIVE"|enum}
-                                             <span class="ty-nowrap ty-stars"><i class="ty-icon-star-empty"></i><i class="ty-icon-star-empty"></i><i class="ty-icon-star-empty"></i><i class="ty-icon-star-empty"></i><i class="ty-icon-star-empty"></i></span>
-                                        {/if}
-                                    {/if}
-                                </div>
-							{/hook}
-							{/if}
+                                            {hook name="products:dotd_product_label"}{/hook}
+                                            {hook name="products:video_gallery"}{/hook}
 
-                            {if $product.product_code}
-                                {assign var="sku" value="sku_$obj_id"}
-                                {$smarty.capture.$sku nofilter}
-                            {/if}
-
-                            <div class="ut2-gl__name">
-                                {if $item_number == "YesNo::YES"|enum}
-                                    <span class="item-number">{$cur_number}.&nbsp;</span>
-                                    {math equation="num + 1" num=$cur_number assign="cur_number"}
+                                            {if $addons.product_reviews.status == "ObjectStatuses::ACTIVE"|enum}
+                                                {if $product.reviews_count}
+                                                    <div class="cn-reviews">
+                                                    <i class="ut2-icon-outline-chat"></i>
+                                                    {$product.reviews_count}</div>{/if}
+                                                {if $product.average_rating}
+                                                    {include file="addons/product_reviews/views/product_reviews/components/product_reviews_stars.tpl"
+                                                    rating=$product.average_rating
+                                                    link=true
+                                                    product=$product
+                                                    }
+                                                {else}
+                                                    <div class="ty-product-review-reviews-stars"
+                                                         data-ca-product-review-reviews-stars-full="0"></div>
+                                                {/if}
+                                            {else}
+                                                {assign var="rating" value="rating_$obj_id"}
+                                                {if $smarty.capture.$rating|strlen > 40 && $product.discussion_type && $product.discussion_type != "D"}
+                                                    {$smarty.capture.$rating nofilter}
+                                                {elseif $addons.discussion.status == "ObjectStatuses::ACTIVE"|enum}
+                                                    <span class="ty-nowrap ty-stars"><i
+                                                                class="ty-icon-star-empty"></i><i
+                                                                class="ty-icon-star-empty"></i><i
+                                                                class="ty-icon-star-empty"></i><i
+                                                                class="ty-icon-star-empty"></i><i
+                                                                class="ty-icon-star-empty"></i></span>
+                                                {/if}
+                                            {/if}
+                                        </div>
+                                    {/hook}
                                 {/if}
 
-                                {assign var="name" value="name_$obj_id"}
-                                {$smarty.capture.$name nofilter}
-                            </div>
-                            
-                            {if $settings.abt__ut2.product_list.$tmpl.show_amount[$settings.abt__device]|default:{"YesNo::NO"|enum} == "YesNo::YES"|enum}
-                                <div class="ut2-gl__amount">
-                                    {assign var="product_amount" value="product_amount_`$obj_id`"}
-                                    {$smarty.capture.$product_amount nofilter}
+                                {if $product.product_code}
+                                    {assign var="sku" value="sku_$obj_id"}
+                                    {$smarty.capture.$sku nofilter}
+                                {/if}
+
+                                <div class="ut2-gl__name">
+                                    {if $item_number == "YesNo::YES"|enum}
+                                        <span class="item-number">{$cur_number}.&nbsp;</span>
+                                        {math equation="num + 1" num=$cur_number assign="cur_number"}
+                                    {/if}
+
+                                    {assign var="name" value="name_$obj_id"}
+                                    {$smarty.capture.$name nofilter}
                                 </div>
-                            {/if}
 
-                            {if $settings.abt__ut2.product_list.price_position_top|default:{"YesNo::YES"|enum} == "YesNo::NO"|enum}
-                            <div class="ut2-gl__price{if $product.price == 0} ut2-gl__no-price{/if}	pr-{$settings.abt__ut2.product_list.price_display_format}{if $product.list_discount || $product.discount} pr-color{/if}" style="min-height: {$smarty.capture.abt__ut2_pr_block_height - 10 nofilter}px;">
-                                <div>
-                                    {assign var="old_price" value="old_price_`$obj_id`"}
-                                    {if $smarty.capture.$old_price|trim}{$smarty.capture.$old_price nofilter}{/if}
+                                {if $settings.abt__ut2.product_list.$tmpl.show_amount[$settings.abt__device]|default:{"YesNo::NO"|enum} == "YesNo::YES"|enum}
+                                    <div class="ut2-gl__amount">
+                                        {assign var="product_amount" value="product_amount_`$obj_id`"}
+                                        {$smarty.capture.$product_amount nofilter}
+                                    </div>
+                                {/if}
 
-                                    {assign var="price" value="price_`$obj_id`"}
-                                    {$smarty.capture.$price nofilter}
-                                </div>
-                                <div>
-                                    {assign var="list_discount" value="list_discount_`$obj_id`"}
-                                    {$smarty.capture.$list_discount nofilter}
+                                {if $settings.abt__ut2.product_list.price_position_top|default:{"YesNo::YES"|enum} == "YesNo::NO"|enum}
+                                    <div class="ut2-gl__price{if $product.price == 0} ut2-gl__no-price{/if}	pr-{$settings.abt__ut2.product_list.price_display_format}{if $product.list_discount || $product.discount} pr-color{/if}"
+                                         style="min-height: {$smarty.capture.abt__ut2_pr_block_height - 10 nofilter}px;">
+                                        <div>
+                                            {assign var="old_price" value="old_price_`$obj_id`"}
+                                            {if $smarty.capture.$old_price|trim}{$smarty.capture.$old_price nofilter}{/if}
 
-                                    {assign var="clean_price" value="clean_price_`$obj_id`"}
-                                    {$smarty.capture.$clean_price nofilter}
-								</div>
-                            </div>
-                            {/if}
+                                            {assign var="price" value="price_`$obj_id`"}
+                                            {$smarty.capture.$price nofilter}
+                                        </div>
+                                        <div>
+                                            {assign var="list_discount" value="list_discount_`$obj_id`"}
+                                            {$smarty.capture.$list_discount nofilter}
+
+                                            {assign var="clean_price" value="clean_price_`$obj_id`"}
+                                            {$smarty.capture.$clean_price nofilter}
+                                        </div>
+                                    </div>
+                                {/if}
 
                             </div>{* End "ut2-gl__content" conteiner *}
 
@@ -289,7 +301,6 @@
                                 </div>
                             {/if}
                         </div>
-
                     {/hook}
                     {assign var="form_close" value="form_close_`$obj_id`"}
                     {$smarty.capture.$form_close nofilter}

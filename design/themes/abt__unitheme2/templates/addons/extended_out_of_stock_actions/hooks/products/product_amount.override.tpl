@@ -1,3 +1,5 @@
+{* Adds a new Out of stock variant *}
+
 {if $show_product_amount && $product.is_edp != "YesNo::YES"|enum && $settings.General.inventory_tracking !== "YesNo::NO"|enum}
     <div class="cm-reload-{$obj_prefix}{$obj_id} stock-wrap" id="product_amount_update_{$obj_prefix}{$obj_id}">
         <input type="hidden" name="appearance[show_product_amount]" value="{$show_product_amount}" />

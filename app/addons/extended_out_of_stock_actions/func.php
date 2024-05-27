@@ -2,7 +2,15 @@
 
 use Tygh\Registry;
 
-function fn_extended_out_of_stock_actions_create_request($params, $auth)
+/**
+ * Creates analogue request and send notification about it to the administrator's email
+ *
+ * @param array $params
+ * @param array $auth
+ * @return true
+ */
+
+function fn_extended_out_of_stock_actions_create_request(array $params, array $auth): bool
 {
     if (fn_allowed_for('ULTIMATE')) {
         $company_id = Registry::get('runtime.company_id');
@@ -36,7 +44,15 @@ function fn_extended_out_of_stock_actions_create_request($params, $auth)
     return true;
 }
 
-function fn_extended_out_of_stock_actions_update_request($params, $request_id = 0) {
+/**
+ * Update analogue request according to the parameters given
+ *
+ * @param array $params
+ * @param int $request_id
+ * @return false|int|mixed
+ */
+function fn_extended_out_of_stock_actions_update_request(array $params, int $request_id = 0): mixed
+{
 
     if ($request_id) {
         db_query("UPDATE ?:request_analog SET ?u WHERE request_id = ?i", $params, $request_id);
@@ -53,7 +69,13 @@ function fn_extended_out_of_stock_actions_update_request($params, $request_id = 
     return $request_id;
 }
 
-function fn_extended_out_of_stock_actions_get_requests($params = [], $lang_code = CART_LANGUAGE)
+/**
+ * Gets the list of requests according to the parameters given
+ *
+ * @param array $params
+ * @return array
+ */
+function fn_extended_out_of_stock_actions_get_requests(array $params = []): array
 {
     $params = array_merge([
         'items_per_page' => 0,
@@ -108,12 +130,25 @@ function fn_extended_out_of_stock_actions_get_requests($params = [], $lang_code 
     return [$items, $params];
 }
 
-function fn_delete_analog_request($request_id)
+/**
+ * Deletes analog request
+ *
+ * @param int $request_id
+ * @return mixed
+ */
+function fn_delete_analog_request(int $request_id): mixed
 {
     return db_query("DELETE FROM ?:request_analog WHERE request_id = ?i", $request_id);
 }
 
-function fn_extended_out_of_stock_actions_get_analogues(int $product_id)
+/**
+ * Gets the list of analogues for a particular product_id
+ * If there was a request for this product - it retrieves the analogues list from the cache
+ *
+ * @param int $product_id
+ * @return mixed
+ */
+function fn_extended_out_of_stock_actions_get_analogues(int $product_id): mixed
 {
     $cache_name = 'extended_out_of_stock_actions_analogues_' . $product_id;
     Registry::registerCache($cache_name, ['mws_analogues'], Registry::cacheLevel('static'));
@@ -139,6 +174,11 @@ function fn_extended_out_of_stock_actions_get_analogues(int $product_id)
     return Registry::get($cache_name);
 }
 
+/**
+ * Prepare parameters list for scroller with analogues
+ *
+ * @return array
+ */
 function fn_scroller_properties() {
     $setting_values = Registry::get('addons.extended_out_of_stock_actions');
     return [

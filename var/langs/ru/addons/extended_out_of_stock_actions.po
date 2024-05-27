@@ -99,3 +99,7 @@ msgstr "Спрятать кнопку добавления товара в ко�
 msgctxt "SettingsOptions::extended_out_of_stock_actions::show_price"
 msgid "Показывать цену"
 msgstr "Показывать цену"
+
+msgctxt "Languages::analogues_list"
+msgid "Аналогичные товары"
+msgstr "Аналогичные товары"

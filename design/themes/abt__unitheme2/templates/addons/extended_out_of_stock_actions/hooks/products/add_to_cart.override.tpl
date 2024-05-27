@@ -1,3 +1,5 @@
+{* Replaces default Add to cart button with the Request analog button in case if a product is out of stock and the out of stock action set as Request analog *}
+
 {if
     $product.out_of_stock_actions === "R"
     && ($product.amount <= 0
