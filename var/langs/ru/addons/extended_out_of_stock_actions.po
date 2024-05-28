@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cs-cart-latest\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: Russian\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
+"X-Crowdin-Project: cs-cart-latest\n"
+"X-Crowdin-Project-ID: 50163\n"
+"X-Crowdin-Language: ru\n"
+"X-Crowdin-File: /release-4.15.2/addons/hidpi.po\n"
+"X-Crowdin-File-ID: 6880\n"
+"PO-Revision-Date: 2022-10-11 10:44\n"
+
+msgctxt "Addons::name::extended_out_of_stock_actions"
+msgid "Extended out of stock actions"
+msgstr "Расширенный функционал работы с аналогами товаров"
+
+msgctxt "Addons::description::extended_out_of_stock_actions"
+msgid "Adds a new out of stock actions"
+msgstr "Модуль добавляет дополнительные действия при отсутствии товара в наличии"
+
+msgctxt "Languages::request_analog"
+msgid "Request analog"
+msgstr "Подобрать аналог"
+
+msgctxt "Languages::extended_out_of_stock_actions.request_price"
+msgid "Request price"
+msgstr "Цена по запросу"
+
+msgctxt "Languages::extended_out_of_stock_actions.quantity"
+msgid "Quantity"
+msgstr "Кол-во"
+
+msgctxt "Languages::extended_out_of_stock_actions.name"
+msgid "Name"
+msgstr "Имя"
+
+msgctxt "Languages::extended_out_of_stock_actions.phone_or_email"
+msgid "Phone \ Email"
+msgstr "Телефон \ Почта"
+
+msgctxt "Languages::extended_out_of_stock_actions.requested_product"
+msgid "Requested product"
+msgstr "Товар"
+
+msgctxt "Languages::request_analog_list"
+msgid "Requests analog"
+msgstr "Запросы аналога"
+
+msgctxt "Languages::extended_out_of_stock_actions.request_created"
+msgid "Request created"
+msgstr "Мы получили ваш запрос. Менеджер свяжется с вами в ближайшее время."
+
+msgctxt "Languages::extended_out_of_stock_actions.something_went_wrong"
+msgid "Something went wrong"
+msgstr "Что-то пошло не так. Пожалуйста, повторите попытку позже."
+
+msgctxt "Languages::extended_out_of_stock_actions.text_email_notice"
+msgid "New analog request received"
+msgstr "Поступил новый запрос на аналог. Проверьте панель администратора."
+
+msgctxt "Languages::extended_out_of_stock_actions.subj"
+msgid "Request analog"
+msgstr "Запрос аналога"
+
+msgctxt "Languages::extended_out_of_stock_actions.event.request_created.name"
+msgid "Request analog: New request was received"
+msgstr "Запрос аналога: Получен новый запрос"
+
+msgctxt "Languages::email_template.extended_out_of_stock_actions_email_template"
+msgid "Request analog: New request was received"
+msgstr "Запрос аналога: Получен новый запрос"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::analogs_settings_header"
+msgid "Settings of a scroller within form"
+msgstr "Настройки скроллера в форме"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::not_scroll_automatically"
+msgid "Не прокручивать автоматически"
+msgstr "Не прокручивать автоматически"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::scroll_per_page"
+msgid "Листать постранично"
+msgstr "Листать постранично"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::item_quantity"
+msgid "Количество элементов"
+msgstr "Количество элементов"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::outside_navigation"
+msgid "Внешняя навигация"
+msgstr "Внешняя навигация"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::hide_add_to_cart_button"
+msgid "Спрятать кнопку добавления товара в корзину"
+msgstr "Спрятать кнопку добавления товара в корзину"
+
+msgctxt "SettingsOptions::extended_out_of_stock_actions::show_price"
+msgid "Показывать цену"
+msgstr "Показывать цену"
+
+msgctxt "Languages::analogues_list"
+msgid "Аналогичные товары"
+msgstr "Аналогичные товары"
