@@ -10,7 +10,7 @@ use Tygh\Registry;
  * @return true
  */
 
-function fn_extended_out_of_stock_actions_create_request(array $params, array $auth): bool
+function fn_analog_request_create_request(array $params, array $auth): bool
 {
     if (fn_allowed_for('ULTIMATE')) {
         $company_id = Registry::get('runtime.company_id');
