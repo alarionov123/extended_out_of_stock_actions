@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             return [CONTROLLER_STATUS_REDIRECT, $_REQUEST['return_url']];
         }
     }
-    return [CONTROLLER_STATUS_OK, 'extended_out_of_stock_actions.manage'];
+    return [CONTROLLER_STATUS_OK, 'analog_request.manage'];
 }
 
 if ($mode === 'manage') {
@@ -47,7 +47,7 @@ if ($mode === 'manage') {
 
     $params['company_id'] = Registry::get('runtime.company_id');
 
-    list($requests, $search) = fn_extended_out_of_stock_actions_get_requests($params, DESCR_SL);
+    list($requests, $search) = fn_analog_request_get_requests($params, DESCR_SL);
 
     $statuses = db_get_list_elements('call_requests', 'status', true, DESCR_SL, 'call_requests.status.');
     $order_statuses = fn_get_statuses(STATUSES_ORDER);

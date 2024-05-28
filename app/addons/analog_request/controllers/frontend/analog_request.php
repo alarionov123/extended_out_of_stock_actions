@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $product_data = !empty($_REQUEST['product_data']) ? $_REQUEST['product_data'] : [];
 
-            if ($res = fn_extended_out_of_stock_actions_create_request($call_data, Tygh::$app['session']['auth'])) {
+            if ($res = fn_analog_request_create_request($call_data, Tygh::$app['session']['auth'])) {
                 fn_set_notification('N', __('notice'), __('extended_out_of_stock_actions.request_created'));
             } else {
                 fn_set_notification('N', __('notice'), __('extended_out_of_stock_actions.something_went_wrong'));

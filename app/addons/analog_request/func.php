@@ -25,7 +25,7 @@ function fn_analog_request_create_request(array $params, array $auth): bool
     $params['company_id'] = $company_id;
     $params['user_id'] = $auth['user_id'];
 
-    $request_id = fn_analog_request_update_request($params);
+    $request_id = fn_analog_request_actions_update_request($params);
 
     $params['request_id'] = $request_id;
 
@@ -51,7 +51,7 @@ function fn_analog_request_create_request(array $params, array $auth): bool
  * @param int $request_id
  * @return false|int|mixed
  */
-function fn_analog_request_update_request(array $params, int $request_id = 0): mixed
+function fn_analog_request_actions_update_request(array $params, int $request_id = 0): mixed
 {
 
     if ($request_id) {
@@ -150,7 +150,7 @@ function fn_delete_analog_request(int $request_id): mixed
  */
 function fn_analog_request_get_analogues(int $product_id): array
 {
-    $cache_name = 'extended_out_of_stock_actions_analogues_' . $product_id;
+    $cache_name = 'analog_' . $product_id;
     Registry::registerCache($cache_name, ['mws_analogues'], Registry::cacheLevel('static'));
     if (!Registry::isExist($cache_name)) {
         $analogues = db_get_field("SELECT recommend_ids FROM ?:mws_analogues WHERE product_id = ?i", $product_id);

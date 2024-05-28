@@ -16,7 +16,7 @@ $schema['central']['orders']['items']['request_analog_list'] = array(
     'attrs' => array(
         'class' => 'is-addon'
     ),
-    'href' => 'extended_out_of_stock_actions.manage',
+    'href' => 'analog_request.manage',
     'position' => 1100
 );
 
