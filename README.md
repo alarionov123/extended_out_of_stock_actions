@@ -1,0 +1,1 @@
+Add-on for CS-Cart that adds and option for customer to request an analog for a desired product if it is out of stock.
