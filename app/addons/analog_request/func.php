@@ -150,28 +150,31 @@ function fn_delete_analog_request(int $request_id): mixed
  */
 function fn_analog_request_get_analogues(int $product_id): array
 {
-    $cache_name = 'analog_' . $product_id;
+    $cache_name = 'extended_out_of_stock_actions_analogues_' . $product_id;
     Registry::registerCache($cache_name, ['mws_analogues'], Registry::cacheLevel('static'));
+
     if (!Registry::isExist($cache_name)) {
         $analogues = db_get_field("SELECT recommend_ids FROM ?:mws_analogues WHERE product_id = ?i", $product_id);
-
         $params = [
             'force_get_by_ids' => true,
             'pid' => $analogues
         ];
 
-        $products = fn_get_products($params);
+        $products = array_filter(fn_get_products($params)[0], function ($item) {
+            return $item['amount'] > 0;
+        });
 
-        $additional_params = [
-            'get_icon' => true,
-            'get_detailed' => true,
-        ];
+        if ($products) {
+            $additional_params = [
+                'get_icon' => true,
+                'get_detailed' => true,
+            ];
 
-        fn_gather_additional_products_data($products[0], $additional_params);
-        Registry::set($cache_name, $products[0]);
+            fn_gather_additional_products_data($products, $additional_params);
+            Registry::set($cache_name, $products);
+        }
     }
-
-    return Registry::get($cache_name);
+    return Registry::get($cache_name) ?? [];
 }
 
 /**
