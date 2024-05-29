@@ -72,6 +72,11 @@
                         <type>checkbox</type>
                         <variants/>
                     </item>
+                    <item id="show_add_to_cart">
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <variants/>
+                    </item>
                 </items>
             </section>
         </sections>
