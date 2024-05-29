@@ -24,19 +24,19 @@
                     <th width="15%">
                         {include file="common/table_col_head.tpl"
                             type="name"
-                            text=__("extended_out_of_stock_actions.name")
+                            text=__("analog_request.name")
                         }
                     </th>
                     <th width="15%">
                         {include file="common/table_col_head.tpl"
                         type="name"
-                        text=__("extended_out_of_stock_actions.quantity")
+                        text=__("analog_request.quantity")
                         }
                     </th>
                     <th width="25%">
                         {include file="common/table_col_head.tpl"
                         type="name"
-                        text=__("extended_out_of_stock_actions.phone_or_email")
+                        text=__("analog_request.phone_or_email")
                         }
                     </th>
                 </tr>
@@ -56,14 +56,14 @@
                             {$request.request_id}
                         </td>
                         <td width="17%" data-th="{__("date")}">{$request.timestamp|date_format:"`$settings.Appearance.date_format`, `$settings.Appearance.time_format`"}</td>
-                        <td width="15%" data-th="{__("extended_out_of_stock_actions.name")}">{$request.name}</td>
-                        <td width="15%" data-th="{__("extended_out_of_stock_actions.quantity")}">{$request.quantity}</td>
-                        <td width="15%" data-th="{__("extended_out_of_stock_actions.phone_or_email")}">{$request.phone}<br>{$request.email}</td>
+                        <td width="15%" data-th="{__("analog_request.name")}">{$request.name}</td>
+                        <td width="15%" data-th="{__("analog_request.quantity")}">{$request.quantity}</td>
+                        <td width="15%" data-th="{__("analog_request.phone_or_email")}">{$request.phone}<br>{$request.email}</td>
 
                         <td class="nowrap">
                             <div class="hidden-tools">
                                 {capture name="tools_list"}
-                                    <li>{btn type="list" text=__("delete") href="extended_out_of_stock_actions.delete?request_id=`$request.request_id`" class="cm-confirm" method="POST"}</li>
+                                    <li>{btn type="list" text=__("delete") href="analog_request.delete?request_id=`$request.request_id`" class="cm-confirm" method="POST"}</li>
                                 {/capture}
                                 {dropdown content=$smarty.capture.tools_list}
                             </div>
@@ -71,7 +71,7 @@
 
                         <td width="25%" data-th="{__("status")}" class="right nowrap">
                             <div id="requests_status_{$request.request_id}">
-                                {include file="common/select_popup.tpl" popup_additional_class="dropleft" id=$request.request_id status=$request.status update_controller="extended_out_of_stock_actions" items_status=$request_statuses btn_meta="btn btn-info btn-small cr-btn-status-{$request.status}"|lower extra="&return_url={$return_url}" st_result_ids="requests_status_{$request.request_id}"}
+                                {include file="common/select_popup.tpl" popup_additional_class="dropleft" id=$request.request_id status=$request.status update_controller="analog_request" items_status=$request_statuses btn_meta="btn btn-info btn-small cr-btn-status-{$request.status}"|lower extra="&return_url={$return_url}" st_result_ids="requests_status_{$request.request_id}"}
                             <!--requests_status_{$request.request_id}--></div>
                         </td>
                     </tr>
@@ -80,7 +80,7 @@
                         <td class="table__first-column {if !$request.product_id && !$request.product_name}mobile-hide"{/if}" colspan="3" valign="top">
                             {if $request.product_id}
                                 <div>
-                                    <span>{__("extended_out_of_stock_actions.requested_product")}:</span><br>
+                                    <span>{__("analog_request.requested_product")}:</span><br>
                                     <a href="{fn_url("products.update?product_id={$request.product_id}")}">{$request.product_name}</a>
                                 </div>
                             {/if}
@@ -104,7 +104,7 @@
 
 {capture name="buttons"}
     {if $requests}
-        {include file="buttons/save.tpl" but_name="dispatch[extended_out_of_stock_actions.m_update]" but_role="submit-link" but_target_form="manage_extended_out_of_stock_actions_form"}
+        {include file="buttons/save.tpl" but_name="dispatch[analog_request.m_update]" but_role="submit-link" but_target_form="manage_extended_out_of_stock_actions_form"}
     {/if}
 {/capture}
 
@@ -116,8 +116,8 @@
 {/capture}
 
 {capture name="sidebar"}
-    {include file="common/saved_search.tpl" dispatch="extended_out_of_stock_actions.manage" view_type="requests"}
-    {include file="addons/extended_out_of_stock_actions/views/extended_out_of_stock_actions/components/requests_search_form.tpl" dispatch="extended_out_of_stock_actions.manage"}
+    {include file="common/saved_search.tpl" dispatch="analog_request.manage" view_type="requests"}
+    {include file="addons/analog_request/views/analog_request/components/requests_search_form.tpl" dispatch="analog_request.manage"}
 {/capture}
 
-{include file="common/mainbox.tpl" title=__("request_analog_list") content=$smarty.capture.mainbox buttons=$smarty.capture.buttons sidebar=$smarty.capture.sidebar content_id="extended_out_of_stock_actions"}
+{include file="common/mainbox.tpl" title=__("request_analog_list") content=$smarty.capture.mainbox buttons=$smarty.capture.buttons sidebar=$smarty.capture.sidebar content_id="analog_request"}

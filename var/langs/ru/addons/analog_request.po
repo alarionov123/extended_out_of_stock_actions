@@ -12,11 +12,11 @@ msgstr ""
 "X-Crowdin-File-ID: 6880\n"
 "PO-Revision-Date: 2022-10-11 10:44\n"
 
-msgctxt "Addons::name::extended_out_of_stock_actions"
+msgctxt "Addons::name::analog_request"
 msgid "Extended out of stock actions"
 msgstr "Расширенный функционал работы с аналогами товаров"
 
-msgctxt "Addons::description::extended_out_of_stock_actions"
+msgctxt "Addons::description::analog_request"
 msgid "Adds a new out of stock actions"
 msgstr "Модуль добавляет дополнительные действия при отсутствии товара в наличии"
 
@@ -24,23 +24,23 @@ msgctxt "Languages::request_analog"
 msgid "Request analog"
 msgstr "Подобрать аналог"
 
-msgctxt "Languages::extended_out_of_stock_actions.request_price"
+msgctxt "Languages::analog_request.request_price"
 msgid "Request price"
 msgstr "Цена по запросу"
 
-msgctxt "Languages::extended_out_of_stock_actions.quantity"
+msgctxt "Languages::analog_request.quantity"
 msgid "Quantity"
 msgstr "Кол-во"
 
-msgctxt "Languages::extended_out_of_stock_actions.name"
+msgctxt "Languages::analog_request.name"
 msgid "Name"
 msgstr "Имя"
 
-msgctxt "Languages::extended_out_of_stock_actions.phone_or_email"
+msgctxt "Languages::analog_request.phone_or_email"
 msgid "Phone \ Email"
 msgstr "Телефон \ Почта"
 
-msgctxt "Languages::extended_out_of_stock_actions.requested_product"
+msgctxt "Languages::analog_request.requested_product"
 msgid "Requested product"
 msgstr "Товар"
 
@@ -48,11 +48,11 @@ msgctxt "Languages::request_analog_list"
 msgid "Requests analog"
 msgstr "Запросы аналога"
 
-msgctxt "Languages::extended_out_of_stock_actions.request_created"
+msgctxt "Languages::analog_request.request_created"
 msgid "Request created"
 msgstr "Мы получили ваш запрос. Менеджер свяжется с вами в ближайшее время."
 
-msgctxt "Languages::extended_out_of_stock_actions.something_went_wrong"
+msgctxt "Languages::analog_request.something_went_wrong"
 msgid "Something went wrong"
 msgstr "Что-то пошло не так. Пожалуйста, повторите попытку позже."
 
@@ -72,34 +72,38 @@ msgctxt "Languages::email_template.extended_out_of_stock_actions_email_template"
 msgid "Request analog: New request was received"
 msgstr "Запрос аналога: Получен новый запрос"
 
-msgctxt "SettingsOptions::extended_out_of_stock_actions::analogs_settings_header"
+msgctxt "SettingsOptions::analog_request::analogs_settings_header"
 msgid "Settings of a scroller within form"
 msgstr "Настройки скроллера в форме"
 
-msgctxt "SettingsOptions::extended_out_of_stock_actions::not_scroll_automatically"
+msgctxt "SettingsOptions::analog_request::not_scroll_automatically"
 msgid "Не прокручивать автоматически"
 msgstr "Не прокручивать автоматически"
 
-msgctxt "SettingsOptions::extended_out_of_stock_actions::scroll_per_page"
+msgctxt "SettingsOptions::analog_request::scroll_per_page"
 msgid "Листать постранично"
 msgstr "Листать постранично"
 
-msgctxt "SettingsOptions::extended_out_of_stock_actions::item_quantity"
+msgctxt "SettingsOptions::analog_request::item_quantity"
 msgid "Количество элементов"
 msgstr "Количество элементов"
 
-msgctxt "SettingsOptions::extended_out_of_stock_actions::outside_navigation"
+msgctxt "SettingsOptions::analog_request::outside_navigation"
 msgid "Внешняя навигация"
 msgstr "Внешняя навигация"
 
-msgctxt "SettingsOptions::extended_out_of_stock_actions::hide_add_to_cart_button"
+msgctxt "SettingsOptions::analog_request::hide_add_to_cart_button"
 msgid "Спрятать кнопку добавления товара в корзину"
 msgstr "Спрятать кнопку добавления товара в корзину"
 
-msgctxt "SettingsOptions::extended_out_of_stock_actions::show_price"
+msgctxt "SettingsOptions::analog_request::show_price"
 msgid "Показывать цену"
 msgstr "Показывать цену"
 
 msgctxt "Languages::analogues_list"
 msgid "Аналогичные товары"
 msgstr "Аналогичные товары"
+
+msgctxt "Languages::if_analogues_do_not_suit"
+msgid "Если вам не подошли данные аналоги, отправьте запрос на подбор в наш магазин:"
+msgstr "Если вам не подошли данные аналоги, отправьте запрос на подбор в наш магазин:"
