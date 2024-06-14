@@ -159,11 +159,25 @@ function fn_analog_request_get_analogues(int $product_id): array
             'force_get_by_ids' => true,
             'pid' => $analogues
         ];
+        if (Registry::get("addons.warehouses.status") === "A") {
+            $products = array_filter(fn_get_products($params)[0], function ($item) {
+                /** @var Tygh\Addons\Warehouses\Manager $manager */
+                $manager = Tygh::$app['addons.warehouses.manager'];
+                /** @var Tygh\Addons\Warehouses\ProductStock $product_stock */
+                $product_stock = $manager->getProductWarehousesStock($item['product_id']);
 
-        $products = array_filter(fn_get_products($params)[0], function ($item) {
-            return $item['amount'] > 0;
-        });
+                /** @var \Tygh\Location\Manager $manager */
+                $manager = Tygh::$app['location'];
+                $destination_id = $manager->getDestinationId();
 
+                $amount = $product_stock->getAmountForDestination($destination_id);
+                return $amount > 0;
+            });
+        } else {
+            $products = array_filter(fn_get_products($params)[0], function ($item) {
+                return $item['amount'] > 0;
+            });
+        }
         if ($products) {
             $additional_params = [
                 'get_icon' => true,
