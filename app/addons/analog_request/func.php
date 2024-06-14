@@ -1,5 +1,6 @@
 <?php
 
+use Tygh\Enum\ObjectStatuses;
 use Tygh\Registry;
 
 /**
@@ -53,7 +54,6 @@ function fn_analog_request_create_request(array $params, array $auth): bool
  */
 function fn_analog_request_actions_update_request(array $params, int $request_id = 0): mixed
 {
-
     if ($request_id) {
         db_query("UPDATE ?:request_analog SET ?u WHERE request_id = ?i", $params, $request_id);
     } else {
@@ -159,25 +159,26 @@ function fn_analog_request_get_analogues(int $product_id): array
             'force_get_by_ids' => true,
             'pid' => $analogues
         ];
-        if (Registry::get("addons.warehouses.status") === "A") {
-            $products = array_filter(fn_get_products($params)[0], function ($item) {
-                /** @var Tygh\Addons\Warehouses\Manager $manager */
-                $manager = Tygh::$app['addons.warehouses.manager'];
-                /** @var Tygh\Addons\Warehouses\ProductStock $product_stock */
-                $product_stock = $manager->getProductWarehousesStock($item['product_id']);
-
-                /** @var \Tygh\Location\Manager $manager */
-                $manager = Tygh::$app['location'];
-                $destination_id = $manager->getDestinationId();
-
-                $amount = $product_stock->getAmountForDestination($destination_id);
-                return $amount > 0;
-            });
-        } else {
-            $products = array_filter(fn_get_products($params)[0], function ($item) {
+        $products = array_filter(fn_get_products($params)[0], function ($item) {
+            if (Registry::get('addons.warehouses.status') !== ObjectStatuses::ACTIVE) {
                 return $item['amount'] > 0;
-            });
-        }
+            }
+            /** @var Tygh\Addons\Warehouses\Manager $manager */
+            $manager = Tygh::$app['addons.warehouses.manager'];
+            /** @var Tygh\Addons\Warehouses\ProductStock $product_stock */
+            $product_stock = $manager->getProductWarehousesStock($item['product_id']);
+
+            if (!$product_stock->hasStockSplitByWarehouses()) {
+                return $item['amount'] > 0;
+            }
+            /** @var \Tygh\Location\Manager $manager */
+            $manager = Tygh::$app['location'];
+            $destination_id = $manager->getDestinationId();
+
+            $amount = $product_stock->getAmountForDestination($destination_id);
+            return $amount > 0;
+        });
+
         if ($products) {
             $additional_params = [
                 'get_icon' => true,
@@ -196,7 +197,8 @@ function fn_analog_request_get_analogues(int $product_id): array
  *
  * @return array
  */
-function fn_scroller_properties() {
+function fn_scroller_properties()
+{
     $setting_values = Registry::get('addons.analog_request');
     return [
         'block_id' => uniqid(),
